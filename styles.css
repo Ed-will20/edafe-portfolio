@@ -670,6 +670,27 @@ body {
     background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
 }
 
+.project-image.shell-photo {
+    background-image: url('@Brianna.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.project-link {
+    color: #64ffda;
+    text-decoration: none;
+    font-family: 'Fira Code', monospace;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.project-link:hover {
+    color: #a8e6cf;
+    text-decoration: underline;
+}
+
 .project-content {
     padding: 1.5rem;
 }

@@ -912,6 +912,14 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+.modal-content strong {
+    color: #64ffda; /* Teal/cyan color matching your theme */
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+
 .close {
     color: #64ffda;
     float: right;
@@ -937,7 +945,7 @@ body {
 
 .modal p {
     line-height: 1.8;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem; /* Increased spacing between paragraphs */
     font-size: clamp(0.9rem, 2vw, 1rem);
 }
 
@@ -945,6 +953,21 @@ body {
     margin-left: 2rem;
     line-height: 1.8;
     font-size: clamp(0.9rem, 2vw, 1rem);
+    margin-bottom: 1.5rem; /* Add space after bullet lists */
+}
+
+.modal ul li {
+    margin-bottom: 0.3rem; /* Reduce space between bullet points */
+}
+
+/* Add space between major sections */
+.modal p:has(+ ul) {
+    margin-bottom: 0.5rem; /* Less space after section headings */
+}
+
+/* Add space before new major sections */
+.modal ul + p {
+    margin-top: 2.5rem; /* More space before new sections */
 }
 
 /* Language Showcase in Modal */

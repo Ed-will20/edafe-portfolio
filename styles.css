@@ -536,7 +536,7 @@ body {
 .experience-list > li > ul > li::before {
     content: '▸';
     position: absolute;
-    left: 0;
+    left: 2;
     color: #64ffda;
     font-weight: bold;
 }

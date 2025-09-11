@@ -514,7 +514,7 @@ body {
     font-size: clamp(0.9rem, 2vw, 1rem);
     line-height: 1.6;
     margin-bottom: 0.8rem;
-    padding-left: 1.5rem;
+    padding-left: 2.0rem;
     position: relative;
 }
 

@@ -526,6 +526,60 @@ body {
     font-weight: bold;
 }
 
+/* Nested list styling for bullet points under main entries */
+.experience-list li ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+}
+
+.experience-list li ul li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.6rem;
+    font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+    line-height: 1.5;
+}
+
+.experience-list li ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 2rem; /* Adjust based on parent padding */
+    color: #64ffda;
+    font-weight: bold;
+}
+
+/* Optional: Different styling for deeper nesting if needed */
+.experience-list li ul li ul {
+    margin-top: 0.3rem;
+}
+
+.experience-list li ul li ul li {
+    padding-left: 1.2rem;
+    font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+}
+
+.experience-list li ul li ul li::before {
+    left: 3.2rem; /* Adjust for deeper nesting */
+}
+
+/* Job title styling - make it stand out */
+.job-title {
+    font-weight: 600;
+    color: #e6f1ff;
+    font-size: clamp(1rem, 2.2vw, 1.1rem);
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+/* Date range styling */
+.date-range {
+    color: #64ffda;
+    font-size: clamp(0.85rem, 1.8vw, 0.95rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 .experience-list li strong {
     color: #64ffda;
     font-weight: 500;

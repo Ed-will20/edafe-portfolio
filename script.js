@@ -16,9 +16,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+        navbar.style.background = 'rgba(5, 7, 13, 0.95)';
     } else {
-        navbar.style.background = 'rgba(0, 0, 0, 0.9)';
+        navbar.style.background = 'rgba(5, 7, 13, 0.9)';
     }
 });
 
@@ -117,14 +117,14 @@ function typeWriter(element, text, speed = 100) {
     type();
 }
 
-// Initialize typing effect
+// Initialize typing effect on the dedicated hero tagline element
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
-        const heroSubtext = document.querySelector('.hero p');
-        if (heroSubtext) {
-            typeWriter(heroSubtext, 'Software & Web Developer | Fullstack Developer | UX Designer', 50);
+        const heroTyped = document.querySelector('#hero-typed');
+        if (heroTyped) {
+            typeWriter(heroTyped, 'Building Full-Stack Products, End to End', 45);
         }
-    }, 1000);
+    }, 900);
 });
 
 // Parallax effect for hero section
@@ -132,7 +132,6 @@ window.addEventListener('scroll', function() {
     const scrolled = window.pageYOffset;
     const rate = scrolled * -0.5;
     
-    // Apply parallax effect to hero content
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
         heroContent.style.transform = `translateY(${rate * 0.1}px)`;
@@ -152,7 +151,6 @@ function createParticles() {
     particlesContainer.id = 'particles-container';
     document.body.appendChild(particlesContainer);
 
-    // Adjust particle count based on screen size
     const particleCount = window.innerWidth < 768 ? 25 : 50;
 
     for (let i = 0; i < particleCount; i++) {
@@ -160,7 +158,7 @@ function createParticles() {
         particle.style.position = 'absolute';
         particle.style.width = '2px';
         particle.style.height = '2px';
-        particle.style.background = 'rgba(100, 255, 218, 0.3)';
+        particle.style.background = 'rgba(56, 189, 248, 0.3)';
         particle.style.borderRadius = '50%';
         particle.style.left = Math.random() * 100 + '%';
         particle.style.top = Math.random() * 100 + '%';
@@ -170,12 +168,10 @@ function createParticles() {
     }
 }
 
-// Initialize particles on load
 document.addEventListener('DOMContentLoaded', function() {
     createParticles();
 });
 
-// Recreate particles on window resize
 window.addEventListener('resize', function() {
     const existingParticles = document.getElementById('particles-container');
     if (existingParticles) {
@@ -222,18 +218,14 @@ document.addEventListener('touchend', function(e) {
 function handleGesture() {
     const swipeThreshold = 50;
     const swipeDistance = touchEndY - touchStartY;
-    
-    // You can add swipe gestures here if needed
-    // For example, swipe up to close modals on mobile
     if (Math.abs(swipeDistance) > swipeThreshold) {
-        // Handle swipe gestures
+        // Reserved for future swipe gestures
     }
 }
 
 // Optimize animations for better performance on mobile
 function optimizeForMobile() {
     if (window.innerWidth < 768) {
-        // Reduce animation complexity on mobile
         const animatedElements = document.querySelectorAll('.skill-category, .project-card');
         animatedElements.forEach(el => {
             el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
@@ -241,7 +233,6 @@ function optimizeForMobile() {
     }
 }
 
-// Call optimization on load and resize
 document.addEventListener('DOMContentLoaded', optimizeForMobile);
 window.addEventListener('resize', optimizeForMobile);
 
@@ -293,7 +284,6 @@ window.addEventListener('error', function(e) {
 
 // Accessibility improvements
 document.addEventListener('keydown', function(e) {
-    // Close modal with Escape key
     if (e.key === 'Escape') {
         const openModals = document.querySelectorAll('.modal[style*="block"]');
         openModals.forEach(modal => {
@@ -302,7 +292,6 @@ document.addEventListener('keydown', function(e) {
         });
     }
 
-    // Navigate with arrow keys when modal is open
     if (e.key === 'Tab') {
         const openModal = document.querySelector('.modal[style*="block"]');
         if (openModal) {
@@ -328,7 +317,7 @@ document.addEventListener('keydown', function(e) {
 // Preload critical resources
 function preloadCriticalResources() {
     const criticalResources = [
-        'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&family=Roboto+Slab:wght@300;400;500;600;700&display=swap'
+        'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&display=swap'
     ];
 
     criticalResources.forEach(resource => {
@@ -357,38 +346,32 @@ function openModalWithAnimation(modalId) {
     modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
     
-    // Reset animation
     modalContent.style.opacity = '0';
     modalContent.style.transform = 'translateY(-50px) scale(0.8)';
     
-    // Animate in
     setTimeout(() => {
         modalContent.style.transition = 'all 0.3s ease';
         modalContent.style.opacity = '1';
         modalContent.style.transform = 'translateY(0) scale(1)';
         
-        // Special animation for language project
         if (modalId === 'language-project') {
             setTimeout(animateLanguageItems, 300);
         }
     }, 10);
 }
 
-// Update the original openModal function
+// Override the base openModal with the animated version
 const originalOpenModal = window.openModal;
 window.openModal = function(modalId) {
     openModalWithAnimation(modalId);
 };
 
-// Enhanced greeting text animation for language project
+// Enhanced greeting text animation (legacy hook, harmless if unused)
 function createGreetingAnimation() {
     const greetingTexts = document.querySelectorAll('.greeting-text');
-    const greetings = ['Hello', 'Hola', 'こんにちは', '안녕하세요'];
-    
     greetingTexts.forEach((text, index) => {
         text.style.opacity = '0';
         text.style.transform = 'scale(0.8)';
-        
         setTimeout(() => {
             text.style.transition = 'all 0.4s ease';
             text.style.opacity = '1';
@@ -397,27 +380,55 @@ function createGreetingAnimation() {
     });
 }
 
+// ============================================
+// PROJECT FILTERING
+// ============================================
+function initProjectFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const filter = button.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                const categories = (card.getAttribute('data-category') || '').split(' ');
+                if (filter === 'all' || categories.includes(filter)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
+}
+
 // Initialize everything
 document.addEventListener('DOMContentLoaded', function() {
     preloadCriticalResources();
     
-    // Add a small delay to ensure smooth loading
     setTimeout(() => {
         document.body.style.opacity = '1';
         createGreetingAnimation();
     }, 100);
     
-    // Add hover effects to project cards
     const projectCards = document.querySelectorAll('.project-card');
     projectCards.forEach(card => {
         card.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-10px) scale(1.02)';
+            if (!this.classList.contains('featured')) {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            }
         });
         
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0) scale(1)';
         });
     });
+
+    initProjectFilters();
 });
 
 // Custom cursor effect for desktop
@@ -429,12 +440,12 @@ function createCustomCursor() {
             position: fixed;
             width: 20px;
             height: 20px;
-            background: rgba(100, 255, 218, 0.3);
+            background: rgba(56, 189, 248, 0.3);
             border-radius: 50%;
             pointer-events: none;
             z-index: 9999;
             transition: all 0.1s ease;
-            border: 2px solid rgba(100, 255, 218, 0.6);
+            border: 2px solid rgba(56, 189, 248, 0.6);
         `;
         document.body.appendChild(cursor);
 
@@ -443,21 +454,19 @@ function createCustomCursor() {
             cursor.style.top = e.clientY - 10 + 'px';
         });
 
-        // Expand cursor on interactive elements
         const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-category');
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 cursor.style.transform = 'scale(2)';
-                cursor.style.background = 'rgba(100, 255, 218, 0.1)';
+                cursor.style.background = 'rgba(56, 189, 248, 0.1)';
             });
             
             el.addEventListener('mouseleave', () => {
                 cursor.style.transform = 'scale(1)';
-                cursor.style.background = 'rgba(100, 255, 218, 0.3)';
+                cursor.style.background = 'rgba(56, 189, 248, 0.3)';
             });
         });
     }
 }
 
-// Initialize custom cursor
 document.addEventListener('DOMContentLoaded', createCustomCursor);

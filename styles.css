@@ -805,28 +805,28 @@ h1, h2, h3, .section-title, .logo, .nav-links,
 }
 
 .project-image.game {
-    background-image: url('project1.png');
+    background-image: url('portfolio-images/project1.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .project-image.language {
-    background-image: url('languagenotes.png');
+    background-image: url('portfolio-images/languagenotes.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .project-image.photogallery {
-    background-image: url('@Brianna.jpg');
+    background-image: url('portfolio-images/@Brianna.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .project-image.canyon {
-    background-image: url('writing.png');
+    background-image: url('portfolio-images/writing.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

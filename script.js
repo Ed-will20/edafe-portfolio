@@ -138,48 +138,6 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Dynamic background particles
-function createParticles() {
-    const particlesContainer = document.createElement('div');
-    particlesContainer.style.position = 'fixed';
-    particlesContainer.style.top = '0';
-    particlesContainer.style.left = '0';
-    particlesContainer.style.width = '100%';
-    particlesContainer.style.height = '100%';
-    particlesContainer.style.pointerEvents = 'none';
-    particlesContainer.style.zIndex = '1';
-    particlesContainer.id = 'particles-container';
-    document.body.appendChild(particlesContainer);
-
-    const particleCount = window.innerWidth < 768 ? 25 : 50;
-
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.style.position = 'absolute';
-        particle.style.width = '2px';
-        particle.style.height = '2px';
-        particle.style.background = 'rgba(56, 189, 248, 0.3)';
-        particle.style.borderRadius = '50%';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        particle.style.animation = `float ${3 + Math.random() * 4}s ease-in-out infinite`;
-        particle.style.animationDelay = Math.random() * 2 + 's';
-        particlesContainer.appendChild(particle);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    createParticles();
-});
-
-window.addEventListener('resize', function() {
-    const existingParticles = document.getElementById('particles-container');
-    if (existingParticles) {
-        existingParticles.remove();
-    }
-    createParticles();
-});
-
 // Add active navigation highlighting
 window.addEventListener('scroll', function() {
     const sections = document.querySelectorAll('section[id]');
@@ -430,43 +388,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
     initProjectFilters();
 });
-
-// Custom cursor effect for desktop
-function createCustomCursor() {
-    if (window.innerWidth > 768) {
-        const cursor = document.createElement('div');
-        cursor.classList.add('custom-cursor');
-        cursor.style.cssText = `
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: rgba(56, 189, 248, 0.3);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: all 0.1s ease;
-            border: 2px solid rgba(56, 189, 248, 0.6);
-        `;
-        document.body.appendChild(cursor);
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX - 10 + 'px';
-            cursor.style.top = e.clientY - 10 + 'px';
-        });
-
-        const interactiveElements = document.querySelectorAll('a, button, .project-card, .skill-category');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.style.transform = 'scale(2)';
-                cursor.style.background = 'rgba(56, 189, 248, 0.1)';
-            });
-            
-            el.addEventListener('mouseleave', () => {
-                cursor.style.transform = 'scale(1)';
-                cursor.style.background = 'rgba(56, 189, 248, 0.3)';
-            });
-        });
-    }
-}
-
-document.addEventListener('DOMContentLoaded', createCustomCursor);

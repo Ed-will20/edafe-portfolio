@@ -819,7 +819,7 @@ h1, h2, h3, .section-title, .logo, .nav-links,
 }
 
 .project-image.photogallery {
-    background-image: url('portfolio-images/Brianna.jpg');
+    background-image: url('portfolio-images/@Brianna.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

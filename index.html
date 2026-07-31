@@ -177,7 +177,8 @@
                         <span class="skill-tag">Vercel</span>
                         <span class="skill-tag">Railway</span>
                         <span class="skill-tag">CI/CD (auto-deploy)</span>
-                        <span class="skill-tag">DNS / Domain Mgmt</span>
+                        <span class="skill-tag">Google Maps/Places API</span>
+                        <span class="skill-tag">Geolocation API</span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -211,11 +212,14 @@
                     <div class="experience-timeline">
                         <ul class="experience-list">
                             <li>
-                                <span class="date-range">JUNE 2025 - PRESENT</span>
+                                <span class="date-range">JANUARY 2026 - PRESENT</span>
                                 <h3>Founder & Full-Stack Developer — EyeFoundYou</h3>
                                 <ul>
                                     <li>Architected and shipped a full-stack production lost & found platform (<strong>eyefoundyou.com</strong>) end-to-end: React frontend, Node/Express backend, PostgreSQL database, JWT/Google OAuth authentication.</li>
+                                    <li>Designed a relational PostgreSQL schema enforcing business rules at the database layer via CHECK constraints, composite UNIQUE constraints, and multi-step SQL transactions — e.g., approving a claim atomically rejects competing claims, updates item status, and opens a chat in a single all-or-nothing operation.</li>
+                                    <li>Implemented secure authentication with JWT and Google OAuth (@react-oauth/google, google-auth-library), and built an image upload pipeline with Multer + Cloudinary supporting item and claim-proof photos. Including a heuristic .edu verification system accounting for schools that back student accounts with Microsoft/Office 365 instead of Google Workspace.</li>
                                     <li>Owned the entire deployment lifecycle — custom domain/DNS, CI/CD on Vercel and Railway, and direct production database management via <strong>psql</strong>.</li>
+                                    <li>Identified a gap where the claim lifecycle never transitioned items to a resolved state, then designed and shipped a two-party resolution flow with mutual ratings/testimonials, an UPSERT-based resubmission pattern, and a growth-attribution system for QR/flier campaigns.</li>
                                 </ul>
                             </li>
                             <li>
@@ -243,7 +247,7 @@
                     <div class="resume-section">
                         <h3>Resume/CV</h3>
                         <p>Kindly find my resume in the button below</p>
-                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:5ae87fb4-989a-4a85-b1d3-f8b887b88793" target="_blank" class="resume-button">
+                        <a href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:5b42934b-f1b7-4a47-940f-93c70d19f70d" target="_blank" class="resume-button">
                             <svg class="resume-icon" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
                             </svg>
@@ -452,14 +456,15 @@
 
             <p><strong>Engineering & Infrastructure:</strong></p>
             <ul>
-                <li>Designed a relational PostgreSQL schema (<strong>users, items, claims, chats, messages</strong>) with versioned, idempotent migrations.</li>
-                <li>Built RESTful Express APIs for authentication, item posting, claims, and messaging.</li>
-                <li>Built an image upload pipeline with Multer + Cloudinary for item and claim-proof photos.</li>
-                <li>Owned the full deployment lifecycle: custom domain and DNS (Namecheap), CI/CD via git-push auto-deploy on Vercel (frontend) and Railway (backend).</li>
-                <li>Diagnosed and fixed real production bugs (CORS misconfiguration, SPA routing 404s, incorrect claim-proof image URLs) using direct <strong>psql</strong> access to the live database.</li>
+                <li>Used SQL transactions and composite UNIQUE/CHECK constraints so approving a claim atomically rejects all competing claims, updates item status, and opens a chat — all-or-nothing, with proper rollback on failure.</li>
+                <li>Built a <strong>'Near Me'</strong> radius search combining the browser's <strong>Geolocation API</strong> with Google Places Autocomplete, including a manual-entry fallback for addresses Google's database can't resolve.</li>
+                <li>Originally sketched ratings as a single field on claims, then recognized mid-build that both parties in a return might want to rate each other independently, redesigned it as a proper one-row-per-rater table before shipping.</li>
+                <li>Discovered, by reading the actual code rather than assuming it worked, that no code path ever transitioned an item to 'resolved' — the claim flow just... never closed. Designed and shipped the missing piece: an either-party 'Mark as Returned' action, plus the ratings and trust-stat features that depended on it.</li>
+                <li>Diagnosed and resolved a live production outage caused by a DNS nameserver misconfiguration (BasicDNS silently switched to Custom DNS) — an infrastructure debugging skill distinct from application-level bug fixing.</li>
+                <li>Designed campus-based browsing as a smarter default filter, not access control — a lightweight, single-database alternative to building real multi-tenant infrastructure."</li>
             </ul>
 
-            <p><strong>Technologies Used:</strong> React (Vite), Tailwind CSS, Node.js/Express, PostgreSQL, JWT, Google OAuth, Multer, Cloudinary, Vercel, Railway, Git.</p>
+            <p><strong>Technologies Used:</strong> React (Vite), Tailwind CSS, Node.js/Express, PostgreSQL, JWT, Google OAuth, Multer, Cloudinary, Vercel, Railway, Git, Google Maps/Places API, Geolocation API.</p>
             <p><strong>Impact:</strong> This is a live, production web application with real users — not a class project or tutorial clone. It demonstrates end-to-end ownership: architecture, database design, authentication, deployment, and production debugging, the same skills used in a professional engineering role.</p>
         </div>
     </div>

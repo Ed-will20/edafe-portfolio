@@ -573,7 +573,7 @@ h1, h2, h3, .section-title, .logo, .nav-links,
 .experience-list > li > ul > li::before {
     content: '▸';
     position: absolute;
-    left: 0.7;
+    left: 0.5rem;
     color: var(--accent);
     font-weight: bold;
 }
